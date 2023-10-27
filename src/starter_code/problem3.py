@@ -64,7 +64,11 @@ def prepare_data(df):
        """
     # 1. Drop the list of named columns `['Events', 'Sports', 'Countries'] and
     # assign the result to a new variable named df_prepared
-    df_prepared = ''  # Add code and delete the ''
+    df_prepared = df.drop(['Events','Sports','Countries'],axis=1)  # Add code and delete the ''
+
+
+
+
     return df_prepared
 
 
@@ -72,8 +76,11 @@ if __name__ == '__main__':
     raw_data_file = Path(__file__).parent.parent.joinpath('data', 'paralympics_raw.csv')
     raw_df = create_dataframe(raw_data_file)
     print_df_information(raw_df)
+    removedColsdf = prepare_data(raw_df)
+    print("£££££££££££££££££££££££££££££££££££££££££££££££££")
+    print_df_information(removedColsdf)
 
-    # Code to run problem 3 solution
-    print("\nColumns before deletion:\n", raw_df.columns)
-    dropped_cols_df = prepare_data(raw_df)
-    print("\nColumns after deletion:\n", dropped_cols_df.columns)
+    # # Code to run problem 3 solution
+    # print("\nColumns before deletion:\n", raw_df.columns)
+    # dropped_cols_df = prepare_data(raw_df)
+    # print("\nColumns after deletion:\n", dropped_cols_df.columns)

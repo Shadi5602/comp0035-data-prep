@@ -69,7 +69,8 @@ if __name__ == '__main__':
     pd.set_option('display.max_columns', events_df.shape[1] + 1)
 
     # 1. Create a data frame with the 'NOC' and 'region' columns from 'data/noc_regions.csv'
-    # Hint: Path(__file__).parent.parent.joinpath('data', 'noc_regions.csv') to reference the file
+    noc_regions = Path(__file__).parent.parent.joinpath('data', 'noc_regions.csv')
+    regions_df = pd.read_csv(noc_regions)
     # Hint: Use the `usecols=['Col','Col2']` attribute in `pd.read_csv`
 
     # 4. Create the merged dataframe by passing df (events_df) and df2 (noc_df) to `prepare_data(df, f1)`

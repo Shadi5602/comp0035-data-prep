@@ -76,5 +76,5 @@ if __name__ == '__main__':
 
     # Problem 5 solution
     # Print unique values for the 'Type' column
-    print("\nThe unique values for the Type column\n", nulls_fixed_df['Type'].unique())
+    print("\nThe unique values for the Type column\n", raw_df['Type'].unique())
 

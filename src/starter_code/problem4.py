@@ -1,6 +1,5 @@
 # Problem 4: Dealing with missing values
 from pathlib import Path
-
 import pandas as pd
 
 
@@ -15,8 +14,8 @@ def create_dataframe(csv_file):
 
     """
     df = pd.read_csv(csv_file)
-    pd.set_option('display.max_rows', df.shape[0] + 1)
-    pd.set_option('display.max_columns', df.shape[1] + 1)
+    # pd.set_option('display.max_rows', df.shape[0] + 1)
+    # pd.set_option('display.max_columns', df.shape[1] + 1)
     # print("\nDataFrame contents:\n", df)
     return df
 
@@ -60,24 +59,29 @@ def prepare_data(df):
     # Use `dropna` and specify to only remove  with null/Nan in the Participants (M) and Participants (F) columns
     # The general syntax is: df.dropna(subset=['AColName', 'AnotherColName'])
     # Remember: assign the result to a new DataFrame, or use the `inplace=True` attribute
+    df_prepared1 = df_prepared.dropna(subset=['Participants (M)','Participants (F)'])
+    values = {"Type":"Winter"}
+    df_prepared2 = df_prepared1.fillna(value = values)
 
     # 3.2 Replace the NaN in Type column with 'Winter'
     # The general syntax is: df.fillna({'ColName': 'ValueToReplaceNull'})
     # Remember: assign the result to a new DataFrame, or use the `inplace=True` attribute
 
-    return df_prepared
+    return df_prepared2
 
 
 if __name__ == '__main__':
     raw_data_file = Path(__file__).parent.parent.joinpath('data', 'paralympics_raw.csv')
     raw_df = create_dataframe(raw_data_file)
-    # print_df_information(raw_df)
+    print_df_information(raw_df)
     dropped_cols_df = prepare_data(raw_df)
 
     # Problem 4
     # 1. Print the missing values in the DataFrame using .isna() or isnnull(). 'True' indicates a missing value.
-    print()  # add code inside the print
+    print(dropped_cols_df.isnull())  # add code inside the print
 
     # 2. Create a dataframe named `missing_rows` with only the rows that contain any missing values
-    missing_rows = ''  # Add code here, delete the ''
-    print(missing_rows)
+    # missing_rows = dropped_cols_df[dropped_cols_df.isna().any(axis=1)]  # Add code here, delete the ''
+    print("\n\n\n**************")
+    # print(missing_rows)
+    print_df_information(dropped_cols_df)

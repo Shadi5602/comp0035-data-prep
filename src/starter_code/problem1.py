@@ -22,8 +22,8 @@ def create_dataframe(csv_file):
     # 2. Uncomment the 2 lines of code below to set the pandas display options to show all rows and columns of the dataset
     # Otherwise, by default pandas will only print as many columns and rows as can be displayed in your terminal window
 
-    pd.set_option('display.max_rows', df.shape[0] + 1)
-    pd.set_option('display.max_columns', df.shape[1] + 1)
+    #pd.set_option('display.max_rows', df.shape[0] + 1)
+    #pd.set_option('display.max_columns', df.shape[1] + 1)
 
     # 3. Add a line of code to using Python print() to print the dataframe contents
 
